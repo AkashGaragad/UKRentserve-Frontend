@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+/* Force class-based dark mode in Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #1b3fd8;
+  --color-primary-light: #e6ecff;
+  --color-primary-dark: #7d9bff;
+  --color-accent: #ffb020;
+  --color-ok: #12805c;
+  --color-bad: #c23a2b;
+  --font-heading: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+/* Road animation */
+@keyframes rd {
+  to { background-position: -40px 0; }
+}
+@keyframes dr {
+  from { left: 0; }
+  to { left: 200px; }
+}
+
+.road-line {
+  animation: rd 1.2s linear infinite;
+}
+.road-car {
+  animation: dr 5s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .road-line, .road-car { animation: none; }
+}
+
+/* Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d5ddf0; border-radius: 99px; }
